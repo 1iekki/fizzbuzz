@@ -10,7 +10,8 @@ namespace FizzBuzz
             string input = File.ReadAllText("input.txt");
             FizzBuzzDetector fizzBuzzDetector = new FizzBuzzDetector();
             OutputObject output = fizzBuzzDetector.getOverlappings(input);
-            Console.WriteLine(output.count);
+            Console.WriteLine(output.OutputString);
+            Console.WriteLine(output.Count);
         }
     }
 }

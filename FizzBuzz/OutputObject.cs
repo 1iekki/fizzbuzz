@@ -4,13 +4,13 @@ namespace FizzBuzz
 {
     public class OutputObject
     {
-        public string outputString;
-        public int count;
+        public string OutputString;
+        public int Count;
 
         public OutputObject()
         {
-            outputString = "";
-            count = 0;
+            OutputString = "";
+            Count = 0;
         }
     }
 }
