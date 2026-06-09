@@ -21,7 +21,11 @@ namespace FizzBuzz
         {
             var tokens = tokenize(input);
             count = 0;
-            
+            if(detectEmpty(tokens)) {
+                outputString = input;
+                return;
+            }
+
             for(int i = 0; i<tokens.Count; i++)
             {
                 if ((i + 1) % 15 == 0)
@@ -41,7 +45,30 @@ namespace FizzBuzz
                 }
             }
 
-            outputString = "";
+            outputString = buildOutputString(tokens);
+        }
+
+        private bool detectEmpty(List<string> tokens)
+        {
+            if(tokens.Count < 1)
+            {
+                return true;
+            }
+
+            foreach(var t in tokens)
+            {
+                if (t.All(char.IsWhiteSpace))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private string buildOutputString(List<string> tokens)
+        {
+            string outputString = "";
             bool previousTokHasNewline = true;
             foreach(var t in tokens)
             {
@@ -60,6 +87,8 @@ namespace FizzBuzz
                     previousTokHasNewline = true;
                 }
             }
+
+            return outputString;
         }
 
         private string replaceAndPreserveEndLine(string replacement, string input)

@@ -25,6 +25,17 @@ public class UnitTest1
     }
 
     [Fact]
+    public void WhiteSpaceOnly()
+    {
+        string input = "      \n\n      \t             ";
+
+        FizzBuzzDetector fizzBuzzDetector = new FizzBuzzDetector();
+        OutputObject output = fizzBuzzDetector.getOverlappings(input);
+
+        Assert.Equal("      \n\n      \t             ", output.OutputString);
+    }
+
+    [Fact]
     public void SignleLineReplacementTest()
     {
         string input = "Mary had a little lamb Little lamb, little lamb Mary had a little lamb It's fleece was white as snow";
@@ -38,11 +49,16 @@ public class UnitTest1
     [Fact]
     public void ReplaceMentCountingTest()
     {
-        string input = "Mary had a little lamb Little lamb, little lamb Mary had a little lamb It's fleece was white as snow";
+        string input1 = "Mary had a little lamb Little lamb, little lamb Mary had a little lamb It's fleece was white as snow";
         
         FizzBuzzDetector fizzBuzzDetector = new FizzBuzzDetector();
-        OutputObject output = fizzBuzzDetector.getOverlappings(input);
+        OutputObject output = fizzBuzzDetector.getOverlappings(input1);
         Assert.Equal(9, output.Count);
+
+        string input2 = "Mary had a";
+        output = fizzBuzzDetector.getOverlappings(input2);
+
+        Assert.Equal(1, output.Count);
     }
 
     [Fact] public void MultiLineReplaceMentTest()
